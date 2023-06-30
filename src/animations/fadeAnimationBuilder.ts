@@ -1,6 +1,7 @@
+// @ts-nocheck
 import { createAnimation } from "@ionic/vue";
 
-const fadeAnimationBuilder = (baseEl, opts) => {
+export const fadeAnimationBuilder = (baseEl, opts) => {
   const enteringAnimation = createAnimation()
     .addElement(opts.enteringEl)
     .fromTo("opacity", 0, 1)

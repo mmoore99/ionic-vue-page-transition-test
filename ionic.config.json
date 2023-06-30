@@ -1,0 +1,7 @@
+{
+  "name": "ionic-vue-page-transition-test",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
