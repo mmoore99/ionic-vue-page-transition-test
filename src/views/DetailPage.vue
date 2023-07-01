@@ -8,12 +8,12 @@
 
         <ion-content :fullscreen="true">
             <div style="margin-top: 15px">
-                <ion-button @click="goBack()"> Go Back<br />ionRouter.back()<br />custom animation: fadeAnimationBuilder </ion-button>
+                <ion-button color="medium" @click="goBack()"> Go Back<br />ionRouter.back()<br />custom animation: fadeAnimationBuilder </ion-button>
             </div>
 
             <div style="margin-top: 15px">
                 <ion-button v-if="isPreviousPage" @click="goToPreviousDetailPage">
-                    Go To Detail Page {{ _previousPageNumber }}<br />ionRouter.navigate<br />custom animation: animationBuilder1 with replace
+                    Go To Detail Page {{ _previousPageNumber }}<br />ionRouter.navigate with replace<br />custom animation: animationBuilder1
                 </ion-button>
 
                 <ion-button v-else disabled class=".ion-text-capitalize">
@@ -29,7 +29,7 @@
                 </ion-button>
             </div>
             <div style="margin-top: 15px">
-                <ion-button @click="goToSubDetailPage1('push')">
+                <ion-button color="success" @click="goToSubDetailPage1('push')">
                     Go To SubDetailPage 1<br />ionRouter.navigate with push<br />custom animation: animationBuilder1
                 </ion-button>
             </div>
