@@ -31,6 +31,12 @@
           custom animation: noAnimationBuilder
         </ion-button>
       </div>
+      <div style="margin-top: 15px">
+        <ion-button @click="goToDetailPage1WithRouterPush()">
+          Go To Detail Page 1<br />ionRouter.push<br />
+          custom animation: none
+        </ion-button>
+      </div>
     </ion-content>
   </ion-page>
 </template>
@@ -94,6 +100,13 @@ const animationBuilder2 = (baseEl: any, opts: any) => {
 
 const goToDetailPage1 = (animationBuilder: any) => {
   ionRouter.push("/detail/1", animationBuilder);
+  // ionRouter.push("/detail/1", animationBuilder1);
+  // ionRouter.push("/detail/1", animationBuilder2);
+};
+
+const goToDetailPage1WithRouterPush = () => {
+  ionRouter.push("/detail/1");
+
   // ionRouter.push("/detail/1", animationBuilder1);
   // ionRouter.push("/detail/1", animationBuilder2);
 };

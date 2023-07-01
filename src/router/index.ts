@@ -17,6 +17,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/DetailPage.vue"),
     props: true,
   },
+  {
+    path: "/detail/subdetail/:pageNumber",
+    component: () => import("../views/SubDetailPage.vue"),
+    props: true,
+  },
 ];
 
 const router = createRouter({

@@ -11,7 +11,7 @@ export const fadeAnimationBuilder = (baseEl, opts) => {
   const leavingAnimation = createAnimation()
     .addElement(opts.leavingEl)
     .fromTo("opacity", 1, 0)
-    .easing("ease-in")
+    .easing("ease-out")
     .duration(2500);
 
   const animation = createAnimation()

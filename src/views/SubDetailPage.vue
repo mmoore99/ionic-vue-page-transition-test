@@ -1,8 +1,8 @@
 <template>
     <ion-page>
-        <ion-header :translucent="true">
+        <ion-header>
             <ion-toolbar>
-                <ion-title>Detail Page {{ props.pageNumber }}</ion-title>
+                <ion-title>SubDetail Page {{ props.pageNumber }}</ion-title>
             </ion-toolbar>
         </ion-header>
 
@@ -12,25 +12,29 @@
             </div>
 
             <div style="margin-top: 15px">
-                <ion-button v-if="isPreviousPage" @click="goToPreviousDetailPage">
-                    Go To Detail Page {{ _previousPageNumber }}<br />ionRouter.navigate<br />custom animation: animationBuilder1 with replace
+                <ion-button v-if="isPreviousPage" @click="goToPreviousDetailPage('replace')">
+                    Go To SubDetail Page {{ _previousPageNumber }}<br />ionRouter.navigate with replace<br />custom animation: fadeAnimation
                 </ion-button>
 
                 <ion-button v-else disabled class=".ion-text-capitalize">
-                    Go To Detail Page {{ _previousPageNumber }}<br />ionRouter.navigate with replace<br />custom animation: animationBuilder1
+                    Go To SubDetail Page {{ _previousPageNumber }}<br />ionRouter.navigate with replace<br />custom animation: fadeAnimation
                 </ion-button>
-                <ion-button @click="goToNextDetailPage()">
-                    Go To Detail Page {{ _nextPageNumber }}<br />ionRouter.navigate with replace<br />custom animation: animationBuilder1
-                </ion-button>
-            </div>
-            <div style="margin-top: 15px">
-                <ion-button @click="goToSubDetailPage1('replace')">
-                    Go To SubDetailPage 1<br />ionRouter.navigate with replace<br />custom animation: animationBuilder1
+
+                <ion-button @click="goToNextDetailPage('replace')">
+                    Go To SubDetail Page {{ _nextPageNumber }}<br />ionRouter.navigate with replace<br />custom animation: fadeAnimation
                 </ion-button>
             </div>
             <div style="margin-top: 15px">
-                <ion-button @click="goToSubDetailPage1('push')">
-                    Go To SubDetailPage 1<br />ionRouter.navigate with push<br />custom animation: animationBuilder1
+                <ion-button v-if="isPreviousPage" @click="goToPreviousDetailPage('push')">
+                    Go To SubDetail Page {{ _previousPageNumber }}<br />ionRouter.navigate with push<br />custom animation: fadeAnimation
+                </ion-button>
+
+                <ion-button v-else disabled class=".ion-text-capitalize">
+                    Go To SubDetail Page {{ _previousPageNumber }}<br />ionRouter.navigate with push<br />custom animation: fadeAnimation
+                </ion-button>
+
+                <ion-button @click="goToNextDetailPage('push')">
+                    Go To SubDetail Page {{ _nextPageNumber }}<br />ionRouter.navigate with push<br />custom animation: fadeAnimation
                 </ion-button>
             </div>
             <div style="margin-top: 15px"></div>
@@ -84,19 +88,16 @@ const _previousPageNumber = computed(() => {
     return _pageNumber.value - 1;
 });
 
-const goToPreviousDetailPage = () => {
+const goToPreviousDetailPage = (routerAction: RouteAction) => {
     if (_previousPageNumber.value === null) {
         return;
     }
-    ionRouter.navigate(`/detail/${_previousPageNumber.value}`, "back", "replace", animationBuilder1);
+
+    ionRouter.navigate(`/detail/subdetail/${_previousPageNumber.value}`, "back", `${routerAction}`, fadeAnimationBuilder);
 };
 
-const goToNextDetailPage = () => {
-    ionRouter.navigate(`/detail/${_nextPageNumber.value}`, "forward", "replace", animationBuilder1);
-};
-
-const goToSubDetailPage1 = (routerAction: RouteAction) => {
-    ionRouter.navigate(`/detail/subdetail/1`, "forward", `${routerAction}`, animationBuilder1);
+const goToNextDetailPage = (routerAction: RouteAction) => {
+    ionRouter.navigate(`/detail/subdetail/${_nextPageNumber.value}`, "forward", `${routerAction}`, fadeAnimationBuilder);
 };
 
 const goBack = () => {
